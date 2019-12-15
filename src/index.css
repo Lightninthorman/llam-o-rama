@@ -12,10 +12,55 @@ code {
     monospace;
 }
 
+header img{
+    height:100px;
+}
+.container{
+    width:100%;
+    margin: 20px 2%;
+}
 .listItem img{
     width:200px;
 }
 
-header img{
-    height:100px;
+
+/****
+***** Show Page Styles
+*****/
+.showContainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.itemImgContainer{
+
+    border: 1px solid black;
+}
+
+.itemDetailsContainer{
+    width:45%;
+}
+
+.itemImgContainer img{
+width:400px;
+}
+
+.onSaleOrigPrice{
+    color:silver;
+    text-decoration: line-through;
+    margin-bottom: 0;
+}
+.onSaleNewPrice{
+    margin-top: 0;
+    color:red;
+}
+
+/****
+***** Cart Page Styles
+*****/
+
+.cart img{
+    width: 100px;
 }

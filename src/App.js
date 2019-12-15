@@ -4,11 +4,13 @@ import Main from './components/Main.js'
 import Show from './components/Show.js'
 import Form from './components/Form.js'
 import Cart from './components/Cart.js'
+import data from './data.js'
 
 class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            items:data,
             view:'home',
             cartItems:[],
             formInputs:{
@@ -20,27 +22,16 @@ class App extends React.Component{
                 onSale:false,
                 subscription:false,
                 category:""
-            }
+            },
+            showItem:{}
         }
     }
 
-    handleView = (view,updatedData) =>{
-        let formInputs = this.state.formInputs
-        if(this.state.view === 'update'){
-            formInputs = {
-                item:updatedData.item,
-                image:updatedData.image,
-                price:updatedData.price,
-                rating:updatedData.rating,
-                description:updatedData.description,
-                onSale:updatedData.onSale,
-                subscription:updatedData.subscription,
-                category:updatedData.category
-            }
-        }
+    handleView = (view,showItem) =>{
         this.setState({
             view:view,
-            formInputs:formInputs
+            showItem: showItem
+
         })
     }
 
@@ -50,10 +41,11 @@ class App extends React.Component{
         })
     }
 
-    removeFromCart = (item,index) =>{
-
+    removeFromCart = (index) =>{
+        let cart = this.state.cartItems
+        let newCart = cart.splice(index,1)
         this.setState({
-
+            cartItems:cart
         })
     }
 
@@ -70,6 +62,7 @@ class App extends React.Component{
                 {/*Begin If statements to establish what page is shown based on what this.state.view is*/}
                 {this.state.view === 'home' ?
                 <Main
+                    items={this.state.items}
                     view={this.state.view}
                     handleView={this.handleView}
                 />
@@ -79,10 +72,12 @@ class App extends React.Component{
                     view={this.state.view}
                     cartItems={this.state.cartItems}
                     handleView={this.handleView}
+                    removeFromCart={this.removeFromCart}
                 />
                 :
                 this.state.view === 'show'?
                 <Show
+                    item={this.state.showItem}
                     view={this.state.view}
                     handleView={this.handleView}
                     addToCart={this.addToCart}
