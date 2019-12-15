@@ -7,17 +7,25 @@ class Main extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            items:data
+            items:data,
+            bannerClicked:false
         }
     }
+
+
 
     render(){
         return(
             <div className='main'>
                 <h3>Main</h3>
+                <Banner />
                 <div className='itemListContainer'>
-                    {this.state.items.map((item)=>(
-                        <ItemList item={item} />
+                    {this.state.items.map((item,i)=>(
+                        <ItemList
+                            item={item} key={i}
+                            addToCart={this.props.addToCart}
+                            handleView={this.props.handleView}
+                        />
                     ))}
                 </div>
             </div>
