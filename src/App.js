@@ -6,7 +6,7 @@ import Form from './components/Form.js'
 import Cart from './components/Cart.js'
 import data from './data.js'
 
-let baseUrl = "https://llama-backend.herokuapp.com/llamas"
+
 
 class App extends React.Component{
     constructor(props){
@@ -29,19 +29,23 @@ class App extends React.Component{
         }
     }
 
-    handleCreate = (createData) => {
-        fetch(`${baseUrl}`,{
-            body:JSON.stringify(createData),
+    handleCreate = (newItem) => {
+        console.log(newItem);
+        fetch("https://llama-backend.herokuapp.com/llamas",{
+            body:JSON.stringify(newItem),
             method: 'POST',
             headers:{
-                'Accept': 'application/json, text/plain, */*', 'Content-Type':'applicaiont/json'
+                'Accept': 'application/json, text/plain, */*'
             }
         })
         .then(createdItem => {
-            return createdItem.json()
+            const newestItem = createdItem.json();
+            console.log("1st Promise", newestItem);
+            return newestItem
         })
         .then(jsonnedPost =>{
-            this.state.handleView('home')
+            console.log("2nd Promise",jsonnedPost);
+            this.handleView('home')
 
         })
         .catch(err=>console.log(err))
@@ -81,6 +85,10 @@ class App extends React.Component{
         })
     }
 
+    handleUpdate = (updatedItem) => {
+        console.log(updatedItem);
+    }
+
     addToCart = (item) => {
         this.setState({
             cartItems: [item, ...this.state.cartItems]
@@ -95,7 +103,12 @@ class App extends React.Component{
         })
     }
 
-
+    checkout = () => {
+        this.setState({
+            view:'home',
+            cartItems:[]
+        })
+    }
 
     render(){
         return(
@@ -119,6 +132,7 @@ class App extends React.Component{
                     cartItems={this.state.cartItems}
                     handleView={this.handleView}
                     removeFromCart={this.removeFromCart}
+                    checkout={this.checkout}
                 />
                 :
                 this.state.view === 'show'?
@@ -133,6 +147,7 @@ class App extends React.Component{
                     view={this.state.view}
                     formInputs={this.state.formInputs}
                     handleCreate = {this.handleCreate}
+                    handleUpdate = {this.handleUpdate}
                 />
 
                 }
