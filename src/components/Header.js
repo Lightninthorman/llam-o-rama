@@ -7,6 +7,10 @@ class Header extends React.Component{
         return(
             <header>
                 <img src="https://pbs.twimg.com/profile_images/3011444974/2c236fda57195b9317dff722b60ac591_400x400.jpeg" alt="llamart" onClick={()=>{this.props.handleView('home')}}/>
+								<div>
+									<h1>Llam-o-rama</h1>
+									<h3>A place for all your llama needs</h3>
+								</div>
                 <input type="button" value="my cart" onClick={()=>{this.props.handleView('cart')}} />
                 <input type="button" value="+ add item" onClick={()=>{this.props.handleView('new')}} />
 
