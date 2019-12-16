@@ -43,7 +43,8 @@ class App extends React.Component{
             body:JSON.stringify(newItem),
             method: 'POST',
             headers:{
-                'Accept': 'application/json, text/plain, */*'
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type':'applicaiont/json'
             }
         })
         .then(createdItem => {
