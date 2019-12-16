@@ -8,10 +8,10 @@ class Form extends React.Component{
       item: '',
       image: '',
       price: '',
-      rating: 1,
+      // rating: 1,
       description:'',
-      onSale:false,
-      subscription:false,
+      // onSale:false,
+      // subscription:false,
       category:'kitchen'
     }
   }
@@ -25,7 +25,14 @@ class Form extends React.Component{
         return  {onSale:!prevState.onSale}
       })
   }
-
+  handleSubmit = (e) => {
+      e.preventDefault()
+      if (this.props.view === 'new'){
+          this.props.handleCreate(this.state)
+      }else if(this.props.view === 'edit'){
+          this.props.handleUpdate(this.state)
+      }
+    }
   // testFunction = (e) => {
   //     e.preventDefault()
   //     this.setState({
@@ -40,10 +47,10 @@ class Form extends React.Component{
             item: this.props.formInputs.item,
             image: this.props.formInputs.image,
             price: this.props.formInputs.price,
-            rating: this.props.formInputs.rating,
+            // rating: this.props.formInputs.rating,
             description:this.props.formInputs.description,
-            onSale:this.props.formInputs.onSale,
-            subscription:this.props.formInputs.subscription,
+            // onSale:this.props.formInputs.onSale,
+            // subscription:this.props.formInputs.subscription,
             category:this.props.formInputs.category
         })
   }
@@ -51,7 +58,7 @@ class Form extends React.Component{
     render(){
         return(
             <div className='form'>
-                <form onSubmit={()=>{this.props.handleCreate(this.state)}}>
+                <form onSubmit={this.handleSubmit}>
                     <label htmlFor="item">Item: </label>
                     <input type="text" placeholder="Item Name" id ="item" value={this.state.item} onChange={this.handleChange}/>
 
@@ -74,13 +81,13 @@ class Form extends React.Component{
                     <label htmlFor="description">Description: </label>
                     <textarea value={this.state.description} id="description" onChange={this.handleChange} />
 
-                    <label htmlFor='rating'>Rating: </label>
+                    {/*<label htmlFor='rating'>Rating: </label>
                     <input type="number" placeholder="Rating 1-5" max="5" min="1" id ="rating" value={this.state.rating} onChange={this.handleChange}/>
 
                     <label htmlFor="onSale">On Sale?: </label>
                     <input type="checkbox" id ="onSale" value={this.state.onSale} onChange={this.checkboxChange}
                     checked={this.state.onSale ? 'checked': ""}
-                    />
+                    />*/}
                     <input type="submit" value='Submit'/>
                 </form>
                 <img src={this.state.image}/>
