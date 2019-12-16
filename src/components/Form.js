@@ -26,18 +26,32 @@ class Form extends React.Component{
       })
   }
 
-  testFunction = (e) => {
-      e.preventDefault()
-      this.setState({
-          category:this.state.category
-      })
-      console.log(this.state.category);
+  // testFunction = (e) => {
+  //     e.preventDefault()
+  //     this.setState({
+  //         category:this.state.category
+  //     })
+  //     console.log(this.state.category);
+  // }
+
+  componentDidMount(){
+
+        this.setState({
+            item: this.props.formInputs.item,
+            image: this.props.formInputs.image,
+            price: this.props.formInputs.price,
+            rating: this.props.formInputs.rating,
+            description:this.props.formInputs.description,
+            onSale:this.props.formInputs.onSale,
+            subscription:this.props.formInputs.subscription,
+            category:this.props.formInputs.category
+        })
   }
 
     render(){
         return(
             <div className='form'>
-                <form onSubmit={this.testFunction}>
+                <form onSubmit={()=>{this.props.handleCreate(this.state)}}>
                     <label htmlFor="item">Item: </label>
                     <input type="text" placeholder="Item Name" id ="item" value={this.state.item} onChange={this.handleChange}/>
 

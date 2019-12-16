@@ -32,6 +32,8 @@ class Cart extends React.Component{
         this.getTotal();
     }
 
+    
+
     componentDidMount(){
         this.getTotal();
     }
@@ -60,6 +62,9 @@ class Cart extends React.Component{
                 ))}
                 <div className="total">
                     <h4>Total: {this.state.total.toFixed(2)}</h4>
+                    {this.props.cartItems.length > 0 ?
+                        <input type="button" value="Checkout" onClick={this.checkout}
+                    }
                 </div>
             </div>
         )

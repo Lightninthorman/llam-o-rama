@@ -6,6 +6,8 @@ import Form from './components/Form.js'
 import Cart from './components/Cart.js'
 import data from './data.js'
 
+let baseUrl = "https://llama-backend.herokuapp.com/llamas"
+
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -17,7 +19,7 @@ class App extends React.Component{
                 item:"",
                 image:"",
                 price:0,
-                rating:0,
+                rating:1,
                 description:"",
                 onSale:false,
                 subscription:false,
@@ -27,10 +29,54 @@ class App extends React.Component{
         }
     }
 
+    handleCreate = (createData) => {
+        fetch(`${baseUrl}`,{
+            body:JSON.stringify(createData),
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json, text/plain, */*', 'Content-Type':'applicaiont/json'
+            }
+        })
+        .then(createdItem => {
+            return createdItem.json()
+        })
+        .then(jsonnedPost =>{
+            this.state.handleView('home')
+
+        })
+        .catch(err=>console.log(err))
+    }
+
     handleView = (view,showItem) =>{
+
+        let formInputs ={
+            item:"",
+            image:"",
+            price:0,
+            rating:1,
+            description:"",
+            onSale:false,
+            subscription:false,
+            category:"kitchen"
+        }
+        if(view === 'edit'){
+            console.log(showItem);
+            formInputs = {
+                item:showItem.item,
+                image:showItem.image,
+                price:showItem.price,
+                rating:showItem.rating,
+                description:showItem.description,
+                onSale:showItem.onSale,
+                subscription:showItem.subscription,
+                category:showItem.category
+            }
+        }
+
         this.setState({
             view:view,
-            showItem: showItem
+            showItem: showItem,
+            formInputs:formInputs
 
         })
     }
@@ -86,6 +132,7 @@ class App extends React.Component{
                 <Form
                     view={this.state.view}
                     formInputs={this.state.formInputs}
+                    handleCreate = {this.handleCreate}
                 />
 
                 }

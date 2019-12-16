@@ -9,7 +9,7 @@ class Show extends React.Component{
                 <div className='itemImgContainer'>
                     <img src={this.props.item.image} alt={this.props.item.item} />
                     <div>
-                        <input type="button" value="Update Item"/>
+                        <input type="button" value="Update Item" onClick={()=>{this.props.handleView('edit',this.props.item)}}/>
                         <input type="button" value="Delete Item"/>
                     </div>
                 </div>
