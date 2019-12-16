@@ -4,7 +4,7 @@ import Main from './components/Main.js'
 import Show from './components/Show.js'
 import Form from './components/Form.js'
 import Cart from './components/Cart.js'
-import data from './data.js'
+//import data from './data.js'
 
 
 
@@ -12,7 +12,7 @@ class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            items:data,
+            items:[],
             view:'home',
             cartItems:[],
             formInputs:{
@@ -28,6 +28,14 @@ class App extends React.Component{
             showItem:{}
         }
     }
+	
+		fetchItems = () => {
+			fetch("https://llama-backend.herokuapp.com/llamas")
+			.then(data => data.json())
+			.then(jData=> {
+				this.setState({items:jData})
+			}).catch(err=>console.log(err))
+		}
 
     handleCreate = (newItem) => {
         console.log(newItem);
@@ -89,6 +97,20 @@ class App extends React.Component{
         console.log(updatedItem);
     }
 
+		handleDelete = (itemId) => {
+			fetch(`https://llama-backend.herokuapp.com/llamas/${itemId}`,{
+				method:'DELETE',
+				headers: {
+					'Accept': 'application/json, text/plain, */*',
+					'Content-Type': 'application/json'
+				}
+			}).then(json=>{
+				this.setState({
+					items: this.state.items.filter(item => item.id !== itemId)
+				})
+			}).catch(err=>console.log(err))
+		}
+
     addToCart = (item) => {
         this.setState({
             cartItems: [item, ...this.state.cartItems]
@@ -109,6 +131,10 @@ class App extends React.Component{
             cartItems:[]
         })
     }
+
+		componentDidMount(){
+			this.fetchItems();
+		}
 
     render(){
         return(
@@ -141,6 +167,7 @@ class App extends React.Component{
                     view={this.state.view}
                     handleView={this.handleView}
                     addToCart={this.addToCart}
+										handleDelete={this.handleDelete}
                 />
                 :
                 <Form
