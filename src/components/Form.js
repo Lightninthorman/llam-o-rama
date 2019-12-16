@@ -5,14 +5,15 @@ class Form extends React.Component{
     constructor() {
     super()
     this.state = {
-      item: '',
-      image: '',
-      price: '',
-      rating: 1,
-      description:'',
-      onSale:false,
-      subscription:false,
-      category:'kitchen'
+        id: null,
+        item: '',
+        image: '',
+        price: '',
+        rating: 1,
+        description:'',
+        onSale:false,
+        subscription:false,
+        category:'kitchen'
     }
   }
 
@@ -51,6 +52,7 @@ class Form extends React.Component{
   componentDidMount(){
 
         this.setState({
+            id:this.props.formInputs.id,
             item: this.props.formInputs.item,
             image: this.props.formInputs.image,
             price: this.props.formInputs.price,
