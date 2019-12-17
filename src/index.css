@@ -1,3 +1,25 @@
+/*	Imported Fonts	*/
+@import url('https://fonts.googleapis.com/css?family=Architects+Daughter|Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lakki+Reddy|Patrick+Hand&display=swap');
+:root {
+/*	Colors */
+	--pink: #cc0070;
+	--light-blue: #14bece;
+	--green: #9cee00;
+	--yellow:#fcff00;
+	--purple: #730ba9;
+	--charcoal: #1b003e;
+/*	Fonts
+/*font-family*/
+	--marker: 'Permanent Marker', cursive;
+	--pen: 'Architects Daughter', cursive;
+	--heading: 'Lakki Reddy', cursive;
+	--regular: 'Patrick Hand', cursive;
+}
+/* * {
+	border: 1px solid gold;
+} */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,24 +27,98 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
+  background-color:grey;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
+header {
+	padding: 10px;
 
+	background-color: var(--pink);
+	color: var(--charcoal);
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
 header img{
-    height:100px;
+    height:120px;
 }
-.container{
-    width:100%;
+header h1{
+	font-family: var(--heading);
+	font-size: 75px;
+	padding: 0;
+	margin: 40px 10px 0 10px;
+	line-height: .5;
+
+}
+
+input{
+	cursor: pointer;
+}
+
+header h3{
+	font-family: var(--pen);
+	margin:0px;
+}
+
+header input{
+	border: none;
+	border-radius: 10px;
+	margin: 10px;
+	padding:10px;
+	height:50px;
+	width:100px;
+	font-size: 14px;
+	background-color: var(--light-blue);
+	color: var(--pink);
+
+}
+
+.title{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.main, .show, .form, .cart{
+	width:auto;
     margin: 20px 2%;
 }
-.listItem img{
-    width:200px;
+
+
+
+/****
+***** Main Page Styles
+*****/
+.itemListContainer{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
 }
 
+.listItem img{
+	margin: auto;
+	display: block;
+	max-width: 95%;
+	max-height: 200px;
+}
+
+.listItem{
+	display:flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding:10px 10px;
+	margin:10px;
+	width:250px;
+	height: 300px;
+	overflow: hidden;
+
+	background-color: var(--green);
+}
+
+.listItem h4, .listItem h3{
+	font-family: var(--pen);
+	margin:0;
+}
 
 /****
 ***** Show Page Styles
@@ -34,19 +130,53 @@ header img{
     margin: 20px 0;
 }
 
-.itemImgContainer{
+.showContainer h2{
+	font-family: var(--pen);
+}
 
-    border: 1px solid black;
+.itemImgContainer{
+	display:flex;
+	flex-direction: column;
+}
+
+.itemImgContainer div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.itemImgContainer div > input{
+	margin: 10px;
+	border: none;
+	height: 30px;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
+.itemImgContainer div > input:hover{
+	background-color: var(--light-blue);
+}
+
+.itemImgContainer img{
+	display:block;
+	margin:auto;
+	width:400px;
 }
 
 .itemDetailsContainer{
     width:45%;
 }
 
-.itemImgContainer img{
-width:400px;
+.itemDetailsContainer input{
+	border: none;
+	height: 30px;
+	border-radius: 10px;
+	font-size: 14px;
 }
 
+.itemDetailsContainer input:hover {
+	background-color: var(--light-blue);
+}
 .onSaleOrigPrice{
     color:silver;
     text-decoration: line-through;
@@ -57,14 +187,112 @@ width:400px;
     color:red;
 }
 
+
+
 /****
 ***** Cart Page Styles
 *****/
+
+.cart{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cart h2{
+	font-family: var(--heading);
+	font-size: 40px;
+	line-height: .5;
+}
 
 .cart img{
     width: 100px;
 }
 
+.cartItem{
+	display: flex;
+	flex-flow: row wrap-reverse;
+	align-items: center;
+	margin: 10px;
+}
+
+.spacer{
+	width: 100px;
+	margin: 20px;
+}
+
+.total{
+	border-top: solid 2px black;
+	width:500px;
+	display:flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.cart input{
+	border: none;
+	height: 30px;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
+.cart input:hover {
+	background-color: var(--light-blue);
+}
 /****
 ***** Form Page Styles
 *****/
+.form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.form h2{
+	font-family: var(--heading);
+	font-size: 40px;
+	line-height: .5;
+}
+
+.formDisplay{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+}
+
+.formgroup{
+	margin-bottom: 15px;
+
+}
+
+.formDisplay form{
+	margin: 0 20px;
+	width: 350px;
+}
+
+.formDisplay img{
+	display:block;
+	margin: 0 15px;
+	height: 250px;
+}
+
+
+
+.button {
+	border: none;
+	height: 30px;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
+.button:hover {
+	background-color: var(--light-blue);
+}
+/****
+***** Banner Styles
+*****/
+.banner{
+	background-image: url('https://previews.123rf.com/images/lemonlemonpie/lemonlemonpie1603/lemonlemonpie160300021/54533878-birthday-party-seamless-pattern-with-colorful-pinata-balloons-and-confetti-on-orange-background.jpg');
+	background-size: contain;
+}

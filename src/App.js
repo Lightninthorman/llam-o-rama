@@ -16,8 +16,9 @@ class App extends React.Component{
             view:'home',
             cartItems:[],
             formInputs:{
+                id:null,
                 item:"",
-                image:"",
+                image:"https://images.vexels.com/media/users/3/151100/isolated/preview/71ebcdb387e917f0976d2387fc80f9e1-llama-sitting-silhouette-by-vexels.png",
                 price:0,
                 rating:1,
                 description:"",
@@ -28,14 +29,15 @@ class App extends React.Component{
             showItem:{}
         }
     }
-	
-		fetchItems = () => {
-			fetch("https://llama-backend.herokuapp.com/llamas")
-			.then(data => data.json())
-			.then(jData=> {
-				this.setState({items:jData})
-			}).catch(err=>console.log(err))
-		}
+
+    fetchItems = () => {
+    	fetch("https://llama-backend.herokuapp.com/llamas")
+    	.then(data => data.json())
+    	.then(jData=> {
+            console.log(jData);
+    		this.setState({items:jData})
+    	}).catch(err=>console.log(err))
+    }
 
     handleCreate = (newItem) => {
         console.log(newItem);
@@ -48,13 +50,13 @@ class App extends React.Component{
             }
         })
         .then(createdItem => {
-            const newestItem = createdItem.json();
-            console.log("1st Promise", newestItem);
-            return newestItem
+            return createdItem.json();
         })
         .then(jsonnedPost =>{
-            console.log("2nd Promise",jsonnedPost);
             this.handleView('home')
+            this.setState({
+                items:jsonnedPost
+            })
 
         })
         .catch(err=>console.log(err))
@@ -63,8 +65,9 @@ class App extends React.Component{
     handleView = (view,showItem) =>{
 
         let formInputs ={
+            id:null,
             item:"",
-            image:"",
+            image:"https://images.vexels.com/media/users/3/151100/isolated/preview/71ebcdb387e917f0976d2387fc80f9e1-llama-sitting-silhouette-by-vexels.png",
             price:0,
             rating:1,
             description:"",
@@ -73,8 +76,9 @@ class App extends React.Component{
             category:"kitchen"
         }
         if(view === 'edit'){
-            console.log(showItem);
+            console.log(showItem.id);
             formInputs = {
+                id:showItem.id,
                 item:showItem.item,
                 image:showItem.image,
                 price:showItem.price,
@@ -95,22 +99,34 @@ class App extends React.Component{
     }
 
     handleUpdate = (updatedItem) => {
-        console.log(updatedItem);
+        console.log("updatedItem=",updatedItem);
+        fetch(`https://llama-backend.herokuapp.com/llamas/${updatedItem.id}`,{
+            body:JSON.stringify(updatedItem),
+            method:'PUT',
+            headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			}
+        }).then(updatedPost =>{
+            this.handleView('home')
+            this.fetchItems()
+					});
     }
 
-		handleDelete = (itemId) => {
-			fetch(`https://llama-backend.herokuapp.com/llamas/${itemId}`,{
-				method:'DELETE',
-				headers: {
-					'Accept': 'application/json, text/plain, */*',
-					'Content-Type': 'application/json'
-				}
-			}).then(json=>{
-				this.setState({
-					items: this.state.items.filter(item => item.id !== itemId)
-				})
-			}).catch(err=>console.log(err))
-		}
+	handleDelete = (itemId) => {
+		fetch(`https://llama-backend.herokuapp.com/llamas/${itemId}`,{
+			method:'DELETE',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			}
+		}).then(json=>{
+            this.handleView('home')
+			this.setState({
+				items: this.state.items.filter(item => item.id !== itemId)
+			})
+		}).catch(err=>console.log(err))
+	}
 
     addToCart = (item) => {
         this.setState({
@@ -173,6 +189,7 @@ class App extends React.Component{
                 :
                 <Form
                     view={this.state.view}
+                    showItem = {this.state.showItem}
                     formInputs={this.state.formInputs}
                     handleCreate = {this.handleCreate}
                     handleUpdate = {this.handleUpdate}
