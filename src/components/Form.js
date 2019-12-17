@@ -7,7 +7,7 @@ class Form extends React.Component{
     this.state = {
         id: null,
         item: '',
-        image: '',
+        image: 'https://images.vexels.com/media/users/3/151100/isolated/preview/71ebcdb387e917f0976d2387fc80f9e1-llama-sitting-silhouette-by-vexels.png',
         price: '',
         rating: 1,
         description:'',
@@ -67,42 +67,46 @@ class Form extends React.Component{
     render(){
         return(
             <div className='form'>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="item">Item: </label>
-                    <input type="text" placeholder="Item Name" id ="item" value={this.state.item} onChange={this.handleChange}/>
+                {this.props.view === 'new'? <h2>Add New Item</h2> : <h2>Update Item</h2>}
+                <div className='formDisplay'>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className='formgroup'>
+                            <label htmlFor="item">Item: </label>
+                            <input type="text" placeholder="Item Name" id ="item" value={this.state.item} onChange={this.handleChange}/>
+                        </div>
+                        <div className='formgroup'>
+                            <label htmlFor="category">Category: </label>
+                            <select id="category" onChange={this.handleChange} value={this.state.category}>
+                                <option value='home decor'>Home Decor </option>
+                                <option value='kitchen'>Kitchen</option>
+                                <option value='clothing'>Clothing</option>
+                                <option value='outdoors'>Outdoors</option>
+                                <option value='intimates'>Intimates</option>
+                                <option value='jewelry'>Jewelry</option>
+																<option value='music'>Music</option>
+																<option value='misc'>Miscellaneous</option>
+                            </select>
+                        </div>
+                        <div className='formgroup'>
+                            <label htmlFor="price">Price: </label>
+                            <input type="text" placeholder="Price" id ="price" value={this.state.price} onChange={this.handleChange}/>
+                        </div>
+                        <div className='formgroup'>
+                            <label htmlFor="image">Image URL: </label>
+                            <input type="text" placeholder="Image URL" id ="image" value={this.state.image} onChange={this.handleChange}/>
+                        </div>
+                        <div className='formgroup'>
+                            <label htmlFor="description">Description: </label>
+                            <textarea rows="6" cols="50" value={this.state.description} id="description" onChange={this.handleChange} />
+                        </div>
 
-                    <label htmlFor="category">Category: </label>
-                    <select id="category" onChange={this.handleChange} value={this.state.category}>
-                        <option value='home decor'>Home Decor </option>
-                        <option value='kitchen'>Kitchen</option>
-                        <option value='clothing'>Clothing</option>
-                        <option value='outdoors'>Outdoors</option>
-                        <option value='intimates'>Intimates</option>
-                        <option value='jewelry'>Jewelry</option>
-												<option value='music'>Music</option>
-												<option value='misc'>Miscellaneous</option>
-                    </select>
-
-                    <label htmlFor="price">Price: </label>
-                    <input type="text" placeholder="Price" id ="price" value={this.state.price} onChange={this.handleChange}/>
-
-                    <label htmlFor="image">Image URL: </label>
-                    <input type="text" placeholder="Image URL" id ="image" value={this.state.image} onChange={this.handleChange}/>
-
-                    <label htmlFor="description">Description: </label>
-                    <textarea value={this.state.description} id="description" onChange={this.handleChange} />
-
-                    {this.props.view === 'edit' ? <> <label htmlFor='rating'>Rating: </label>
-                    <input type="number" placeholder="Rating 1-5" max="5" min="1" id ="rating" value={this.state.rating} onChange={this.handleChange}/>
-
-                    <label htmlFor="onSale">On Sale?: </label>
-                    <input type="checkbox" id ="onSale" value={this.state.onSale} onChange={this.checkboxChange}
-                    checked={this.state.onSale ? 'checked': ""}
-                    /> </> : null}
-                    <input type="submit" value='Submit'/>
-                </form>
-                <img src={this.state.image}/>
-                <h4>On sale is set to: {this.state.onSale ? "True" : "False"}</h4>
+                        {this.props.view === 'edit' ? <div className='formgroup'> <label htmlFor='rating'>Rating: </label>
+                        <input type="number" placeholder="Rating 1-5" max="5" min="1" id ="rating" value={this.state.rating} onChange={this.handleChange}/>
+                        </div> : null}
+                        <input className='button' type="submit" value='Submit'/>
+                    </form>
+                    <img src={this.state.image}/>
+                </div>
             </div>
         )
     }
