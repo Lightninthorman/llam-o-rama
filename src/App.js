@@ -109,10 +109,7 @@ class App extends React.Component{
         }).then(updatedPost =>{
             this.handleView('home')
             this.fetchItems()
-        }
-
-
-        )
+					});
     }
 
 	handleDelete = (itemId) => {
