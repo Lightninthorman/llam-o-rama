@@ -12,6 +12,12 @@ class Main extends React.Component{
         }
     }
 
+    showDiscounts= () => {
+        this.setState({
+            bannerClicked:!this.state.bannerClicked
+        })
+    }
+
 
 
     render(){
@@ -21,11 +27,20 @@ class Main extends React.Component{
                 <Banner />
                 <div className='itemListContainer'>
                     {this.props.items.map((item,i)=>(
-                        <ItemList
+                        this.state.bannerClicked === false ? <ItemList
                             item={item} key={i}
                             addToCart={this.props.addToCart}
                             handleView={this.props.handleView}
                         />
+                        :
+                        (item.onSale ? <ItemList
+                            item={item} key={i}
+                            addToCart={this.props.addToCart}
+                            handleView={this.props.handleView}
+                        />
+                        :
+                        null
+                        )
                     ))}
                 </div>
             </div>

@@ -3,32 +3,33 @@
 
 :root {
 /*	Colors */
-	--purple: #6b2d54;
+	--pink: #cc0070;
 	--light-blue: #14bece;
-	--dark-blue: #2665d6;
-	--light-purple: #bf34f0;
-	--charcoal: #181a1b;
+	--green: #9cee00;
+	--yellow:#fcff00;
+	--purple: #730ba9;
+	--charcoal: #1b003e;
 /*	Fonts
 /*font-family*/
 	--marker: 'Permanent Marker', cursive;
 	--pen: 'Architects Daughter', cursive;
 }
-* {
+/* * {
 	border: 1px solid gold;
-}
+} */
 
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-	background-color: var(--charcoal);
+	background-color: var(--purple);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 header {
 	font-family: var(--marker);
-	color: white;
+	color: var(--light-blue);
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -93,3 +94,12 @@ width:400px;
 /****
 ***** Form Page Styles
 *****/
+
+
+/****
+***** Banner Styles
+*****/
+.banner{
+	background-image: url('https://previews.123rf.com/images/lemonlemonpie/lemonlemonpie1603/lemonlemonpie160300021/54533878-birthday-party-seamless-pattern-with-colorful-pinata-balloons-and-confetti-on-orange-background.jpg');
+	background-size: contain;
+}

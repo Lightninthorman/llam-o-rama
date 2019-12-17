@@ -34,6 +34,7 @@ class App extends React.Component{
     	fetch("https://llama-backend.herokuapp.com/llamas")
     	.then(data => data.json())
     	.then(jData=> {
+            console.log(jData);
     		this.setState({items:jData})
     	}).catch(err=>console.log(err))
     }
