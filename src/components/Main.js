@@ -23,8 +23,7 @@ class Main extends React.Component{
     render(){
         return(
             <div className='main'>
-                <h3>Main</h3>
-                <Banner />
+                
                 <div className='itemListContainer'>
                     {this.props.items.map((item,i)=>(
                         this.state.bannerClicked === false ? <ItemList

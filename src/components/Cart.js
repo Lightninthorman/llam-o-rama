@@ -48,13 +48,13 @@ class Cart extends React.Component{
     render(){
         return(
             <div className='cart'>
-                <h3>Cart</h3>
+                <h2>My Cart</h2>
                 {this.props.cartItems.map((item,key)=>(
                     <div className='cartItem' key={key}>
-                        <input type="button" value="Remove Item" onClick={()=>this.removeItem(key,item)}/>
-                        <img src={item.image} alt={item.item} />
-                        <h4>{item.item}</h4>
-                        {item.onSale ? <h4>${(item.price*.4).toFixed(2)}</h4> : <h4>${(item.price).toFixed(2)}</h4>}
+                        <input className = 'spacer' type="button" value="Remove Item" onClick={()=>this.removeItem(key,item)}/>
+                        <img className = 'spacer'src={item.image} alt={item.item} />
+                        <h4 className = 'spacer'>{item.item}</h4>
+                        {item.onSale ? <h4 className = 'spacer'>${(item.price*.4).toFixed(2)}</h4> : <h4 className = 'spacer'>${(item.price).toFixed(2)}</h4>}
 
                     </div>
 
