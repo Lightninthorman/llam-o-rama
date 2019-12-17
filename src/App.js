@@ -18,7 +18,7 @@ class App extends React.Component{
             formInputs:{
                 id:null,
                 item:"",
-                image:"",
+                image:"https://images.vexels.com/media/users/3/151100/isolated/preview/71ebcdb387e917f0976d2387fc80f9e1-llama-sitting-silhouette-by-vexels.png",
                 price:0,
                 rating:1,
                 description:"",
@@ -34,6 +34,7 @@ class App extends React.Component{
     	fetch("https://llama-backend.herokuapp.com/llamas")
     	.then(data => data.json())
     	.then(jData=> {
+            console.log(jData);
     		this.setState({items:jData})
     	}).catch(err=>console.log(err))
     }
@@ -66,7 +67,7 @@ class App extends React.Component{
         let formInputs ={
             id:null,
             item:"",
-            image:"",
+            image:"https://images.vexels.com/media/users/3/151100/isolated/preview/71ebcdb387e917f0976d2387fc80f9e1-llama-sitting-silhouette-by-vexels.png",
             price:0,
             rating:1,
             description:"",
