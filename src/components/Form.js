@@ -83,6 +83,8 @@ class Form extends React.Component{
                                 <option value='outdoors'>Outdoors</option>
                                 <option value='intimates'>Intimates</option>
                                 <option value='jewelry'>Jewelry</option>
+																<option value='music'>Music</option>
+																<option value='misc'>Miscellaneous</option>
                             </select>
                         </div>
                         <div className='formgroup'>
