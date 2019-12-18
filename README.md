@@ -4,16 +4,17 @@
 https://llamorama.herokuapp.com/
 
 ### Technologies Used 
-HTML/CSS
-Javascript
-React
-PHP
-PostgreSQL
-Apache
-Heroku
-Git & Github
-Slack & Zoom 
-Linux & MacOSX
+
+* HTML/CSS
+* Javascript
+* React
+* PHP
+* PostgreSQL
+* Apache
+* Heroku
+* Git & Github
+* Slack & Zoom 
+* Linux & MacOSX
 
 ### The Approach
 We initially started with a project idea that was simple and made us laugh. The laughter soon died out. And though it was simple in concept, the implemenation would prove to be difficult.
