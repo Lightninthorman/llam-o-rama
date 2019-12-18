@@ -1,68 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Llam-o-rama
+## An online store for all your llama needs
+#### Link to site
+https://llamorama.herokuapp.com/
 
-## Available Scripts
+### Technologies Used 
+HTML/CSS
+Javascript
+React
+PHP
+PostgreSQL
+Apache
+Heroku
+Git & Github
+Slack & Zoom 
+Linux & MacOSX
 
-In the project directory, you can run:
+### The Approach
+We initially started with a project idea that was simple and made us laugh. The laughter soon died out. And though it was simple in concept, the implemenation would prove to be difficult.
+Our idea was to create a store website as a Single Page Application. The store would sell llamas and llama related items at a steep premium. 
+Our MVP would be a CRUD app - an administrator would be able to create, update and delete items, and the page would load all items from the server database.
+Additional goals were to allow visitors to add items to a cart and checkout, enable user signup/login, display a banner of hot/on sale items, allow users to filter/sort by category/price/etc., ...
 
-### `npm start`
+We initally attempted to put both the front-end and the back-end inside of a single github repository, but were tipped off by a classmate to create two separate repos.
+So this app utilizes two github repositories and two heroku applications. One for the front-end and the other for the back-end.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Once we figured out the infrastructure, we were able to get through most of the basic CRUD, with the exception of updating items. For some reason we had immense difficutly debugging the update function. In fact, it still is not working.
+PHP does not handle false values well. Additionally, in the proccess of debugging the update function, we broke it even more. 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Unsolved Problems
+The update function and handling the true/false-ness of onSale & subscription data keys. For some reason, the data does not go to the front-end as true, it will only come up as false. Even though the data in the database is clearly true.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Notes 
+You did what you could.
